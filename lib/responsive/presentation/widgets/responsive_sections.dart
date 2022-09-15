@@ -15,7 +15,7 @@ class ResponsiveSections {
     required SectionTile rightTile,
     MainAxisAlignment? mainAxisAlignment,
     double? mobileSizeBoxHeight,
-    double? sizeBoxHeight,
+    double? sizeBoxWidth,
   }) {
     return !Breakpoints.isMobileSmall(context) && !Breakpoints.isMobileMedium(context) && !Breakpoints.isMobileLarge(context)
         ? Row(
@@ -23,11 +23,12 @@ class ResponsiveSections {
             children: [
               leftTile.tile(),
               SizedBox(
-                width: Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)
-                    ? 0
-                    : Breakpoints.isTablet(context)
-                        ? 20
-                        : 30,
+                width: sizeBoxWidth ??
+                    (Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)
+                        ? 0
+                        : Breakpoints.isTablet(context)
+                            ? 20
+                            : 30),
               ),
               rightTile.tile(),
             ],
@@ -38,7 +39,7 @@ class ResponsiveSections {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   rightTile.tile(),
-                  const SizedBox(height: 20),
+                  SizedBox(height: mobileSizeBoxHeight ?? 20),
                   leftTile.tile(),
                 ],
               )
@@ -47,73 +48,10 @@ class ResponsiveSections {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   leftTile.tile(),
-                  const SizedBox(height: 20),
+                  SizedBox(height: mobileSizeBoxHeight ?? 20),
                   rightTile.tile(),
                 ],
               );
-    /* if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
-      if (mobileRevertSection == true) {
-        return Column(
-          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            rightTile.tile(),
-            SizedBox(height: mobileSizeBoxHeight ?? 20),
-            leftTile.tile(),
-          ],
-        );
-      } else {
-        return Column(
-          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            leftTile.tile(),
-            SizedBox(height: mobileSizeBoxHeight ?? 20),
-            rightTile.tile(),
-          ],
-        );
-      }
-    } else {
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          leftTile.tile(),
-          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
-          rightTile.tile(),
-        ],
-      );
-    } */
-    /* if (!Breakpoints.isMobileSmall(context) || !Breakpoints.isMobileMedium(context) || !Breakpoints.isMobileLarge(context)) {
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          leftTile.tile(),
-          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
-          rightTile.tile(),
-        ],
-      );
-    } else {
-      if (mobileRevertSection == true) {
-        return Column(
-          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            rightTile.tile(),
-            SizedBox(height: mobileSizeBoxHeight ?? 20),
-            leftTile.tile(),
-          ],
-        );
-      } else {
-        return Column(
-          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            leftTile.tile(),
-            SizedBox(height: mobileSizeBoxHeight ?? 20),
-            rightTile.tile(),
-          ],
-        );
-      } */
   }
 
   Widget section3({
@@ -122,56 +60,40 @@ class ResponsiveSections {
     required SectionTile rightTile,
     MainAxisAlignment? mainAxisAlignment,
     double? mobileSizeBoxHeight,
-    double? sizeBoxHeight,
+    double? sizeBoxWidth,
   }) {
-    /* if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
-      return Column(
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          leftTile.tile(),
-          SizedBox(height: mobileSizeBoxHeight ?? 20),
-          centerTile.tile(),
-          SizedBox(height: mobileSizeBoxHeight ?? 20),
-          rightTile.tile(),
-        ],
-      );
-    } else {
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          leftTile.tile(),
-          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
-          centerTile.tile(),
-          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
-          rightTile.tile(),
-        ],
-      );
-    } */
-
-    if (!Breakpoints.isMobileSmall(context) || !Breakpoints.isMobileMedium(context) || !Breakpoints.isMobileLarge(context)) {
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          leftTile.tile(),
-          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
-          centerTile.tile(),
-          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
-          rightTile.tile(),
-        ],
-      );
-    } else {
-      return Column(
-        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          leftTile.tile(),
-          SizedBox(height: mobileSizeBoxHeight ?? 20),
-          centerTile.tile(),
-          SizedBox(height: mobileSizeBoxHeight ?? 20),
-          rightTile.tile(),
-        ],
-      );
-    }
+    return !Breakpoints.isMobileSmall(context) && !Breakpoints.isMobileMedium(context) && !Breakpoints.isMobileLarge(context)
+        ? Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              leftTile.tile(),
+              SizedBox(
+                width: sizeBoxWidth ??
+                    (Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)
+                        ? 0
+                        : Breakpoints.isTablet(context)
+                            ? 20
+                            : 30),
+              ),
+              centerTile.tile(),
+              SizedBox(
+                width: Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)
+                    ? 0
+                    : Breakpoints.isTablet(context)
+                        ? 20
+                        : 30,
+              ),
+              rightTile.tile(),
+            ],
+          )
+        : Column(
+            children: [
+              leftTile.tile(),
+              SizedBox(height: mobileSizeBoxHeight ?? 20),
+              centerTile.tile(),
+              SizedBox(height: mobileSizeBoxHeight ?? 20),
+              rightTile.tile(),
+            ],
+          );
   }
 }
