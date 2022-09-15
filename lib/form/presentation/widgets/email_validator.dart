@@ -337,4 +337,5 @@ List domainExtensionList = [
   '.zr',
   '.zm',
   '.zw',
+  '.immo',
 ];
