@@ -17,6 +17,40 @@ class ResponsiveSections {
     double? mobileSizeBoxHeight,
     double? sizeBoxHeight,
   }) {
+    return !Breakpoints.isMobileSmall(context) && !Breakpoints.isMobileMedium(context) && !Breakpoints.isMobileLarge(context)
+        ? Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              leftTile.tile(),
+              SizedBox(
+                width: Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)
+                    ? 0
+                    : Breakpoints.isTablet(context)
+                        ? 20
+                        : 30,
+              ),
+              rightTile.tile(),
+            ],
+          )
+        : mobileRevertSection == true
+            ? Column(
+                mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  rightTile.tile(),
+                  const SizedBox(height: 20),
+                  leftTile.tile(),
+                ],
+              )
+            : Column(
+                mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  leftTile.tile(),
+                  const SizedBox(height: 20),
+                  rightTile.tile(),
+                ],
+              );
     /* if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
       if (mobileRevertSection == true) {
         return Column(
@@ -49,7 +83,7 @@ class ResponsiveSections {
         ],
       );
     } */
-    if (!Breakpoints.isMobileSmall(context) || !Breakpoints.isMobileMedium(context) || !Breakpoints.isMobileLarge(context)) {
+    /* if (!Breakpoints.isMobileSmall(context) || !Breakpoints.isMobileMedium(context) || !Breakpoints.isMobileLarge(context)) {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -79,8 +113,7 @@ class ResponsiveSections {
             rightTile.tile(),
           ],
         );
-      }
-    }
+      } */
   }
 
   Widget section3({
