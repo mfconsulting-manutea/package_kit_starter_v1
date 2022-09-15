@@ -17,7 +17,7 @@ class ResponsiveSections {
     double? mobileSizeBoxHeight,
     double? sizeBoxHeight,
   }) {
-    if (Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)) {
+    if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
       if (mobileRevertSection == true) {
         return Column(
           mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
@@ -59,7 +59,7 @@ class ResponsiveSections {
     double? mobileSizeBoxHeight,
     double? sizeBoxHeight,
   }) {
-    if (Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)) {
+    if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
       return Column(
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
