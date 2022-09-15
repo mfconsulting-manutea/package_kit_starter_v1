@@ -25,8 +25,8 @@ dependencies:
   webviewx:
   connectivity_plus:
   url_launcher:
-  bloc: ^8.1.0
-  flutter_bloc: ^8.1.1
+  bloc:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:
