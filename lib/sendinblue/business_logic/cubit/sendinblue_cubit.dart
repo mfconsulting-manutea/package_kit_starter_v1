@@ -6,11 +6,11 @@ import 'package:package_kit_starter_v1/sendinblue/data/repositories/sendinblue_r
 part 'sendinblue_state.dart';
 
 class SendinblueCubit extends Cubit<SendinblueState> {
-  final String apiKey;
+  // final String apiKey;
   late SendinblueRepository sendinblueRepository;
 
   SendinblueCubit({
-    required this.apiKey,
+    // required this.apiKey,
     required this.sendinblueRepository,
   }) : super(SendinblueInitial());
 
