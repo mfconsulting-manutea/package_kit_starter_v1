@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/services.dart';
+import 'package:package_kit_starter_v1/animated_loading_indicator/presentation/widgets/animated_loading_indicator.dart';
 import 'package:package_kit_starter_v1/scaffold/presentation/widgets/view.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -99,8 +100,14 @@ class _ScaffoldCustomizedState extends State<ScaffoldCustomized> {
               if (state is ConnectivityFailure) {}
             },
             builder: (context, state) {
+              if (state is ConnectivityInitial) {
+                context.watch<ConnectivityCubit>().checkConnectivity();
+              }
               if (state is ConnectivityLoading) {
-                return const Center(child: CircularProgressIndicator());
+                return Center(
+                    child: AnimatedLoadingIndicator(
+                  configApp: widget.configApp,
+                ));
               }
               if (state is ConnectivityFailure) {
                 return Center(
@@ -204,9 +211,40 @@ class _ScaffoldCustomizedState extends State<ScaffoldCustomized> {
 
               // return widget.fixHeader != true ? fixHeader(headerHeight: headerHeight, footerHeight: footerHeight, router: router) : header(router: router);
               return widget.fixHeader == true
-                  ? View(context: context, configApp: widget.configApp, configHeader: widget.configApp.configHeader, configFooter: widget.configApp.configFooter, body: widget.body)
-                      .fixHeader(headerHeight: headerHeight, footerHeight: footerHeight, router: router)
-                  : View(context: context, configApp: widget.configApp, configHeader: widget.configApp.configHeader, configFooter: widget.configApp.configFooter, body: widget.body).defaultView();
+                  ? View(
+                      context: context,
+                      configApp: widget.configApp,
+                      configHeader: widget.configApp.configHeader,
+                      configFooter: widget.configApp.configFooter,
+                      hideHeader: widget.hideHeader,
+                      disableHeaderSpaceAfter: widget.disableHeaderSpaceAfter,
+                      showIconEndDrawer: widget.showIconEndDrawer,
+                      pageTitle: widget.pageTitle,
+                      showPageTitleInsteadOfLogo: widget.showPageTitleInsteadOfLogo,
+                      disableBodyPadding: widget.disableBodyPadding,
+                      hideFooter: widget.hideFooter,
+                      disableFooterSpaceBefore: widget.disableFooterSpaceBefore,
+                      body: widget.body,
+                    ).fixHeader(
+                      headerHeight: headerHeight,
+                      footerHeight: footerHeight,
+                      router: router,
+                    )
+                  : View(
+                      context: context,
+                      configApp: widget.configApp,
+                      configHeader: widget.configApp.configHeader,
+                      configFooter: widget.configApp.configFooter,
+                      hideHeader: widget.hideHeader,
+                      disableHeaderSpaceAfter: widget.disableHeaderSpaceAfter,
+                      showIconEndDrawer: widget.showIconEndDrawer,
+                      pageTitle: widget.pageTitle,
+                      showPageTitleInsteadOfLogo: widget.showPageTitleInsteadOfLogo,
+                      disableBodyPadding: widget.disableBodyPadding,
+                      hideFooter: widget.hideFooter,
+                      disableFooterSpaceBefore: widget.disableFooterSpaceBefore,
+                      body: widget.body,
+                    ).defaultView();
             },
           ),
         ),
