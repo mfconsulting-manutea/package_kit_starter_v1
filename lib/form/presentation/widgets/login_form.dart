@@ -9,6 +9,8 @@ import 'email_validator.dart';
 
 class LoginForm extends StatefulWidget {
   final ConfigApp configApp;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
   final BorderSide? borderSide;
   final bool isDarkTheme;
   final Function emailOnChanded;
@@ -20,6 +22,8 @@ class LoginForm extends StatefulWidget {
   const LoginForm({
     Key? key,
     required this.configApp,
+    required this.emailController,
+    required this.passwordController,
     this.borderSide,
     required this.isDarkTheme,
     required this.emailOnChanded,
@@ -51,6 +55,7 @@ class _LoginFormState extends State<LoginForm> {
           children: [
             // Email
             textFormField(
+              controller: widget.emailController,
               isDarkTheme: widget.isDarkTheme,
               configApp: widget.configApp,
               maxWidth: 400,
@@ -77,6 +82,7 @@ class _LoginFormState extends State<LoginForm> {
 
             // Password
             textFormField(
+              controller: widget.passwordController,
               isDarkTheme: widget.isDarkTheme,
               configApp: widget.configApp,
               maxWidth: 400,
@@ -123,7 +129,7 @@ class _LoginFormState extends State<LoginForm> {
 
             // Connexion
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
