@@ -119,93 +119,97 @@ class _ScaffoldCustomizedState extends State<ScaffoldCustomized> {
               }
 
               if (widget.isUnderConstruction == true) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: SizedBox(
-                        height: 250,
-                        child: Image.network(
-                          widget.configApp.underConstructionImageUrl!,
-                          fit: BoxFit.contain,
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: SizedBox(
+                          height: 250,
+                          child: Image.network(
+                            widget.configApp.underConstructionImageUrl!,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        children: [
-                          Text(
-                            widget.configApp.underConstructionTitle ?? LanguageFr.underConstructionTitle,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            widget.configApp.underConstructionDescription ?? LanguageFr.underConstructionDescription,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-
-                          //
-                          const SizedBox(height: 10),
-                          GestureDetector(
-                            onTap: () {
-                              launchUrl(
-                                Uri.parse("https://weblifestarter.com"),
-                                mode: LaunchMode.inAppWebView,
-                                // webViewConfiguration: const WebViewConfiguration(headers: <String, String>{'my_header_key': 'my_header_value'}),
-                              );
-                            },
-                            child: Text(
-                              LanguageFr.textByWeblifestarter,
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            Text(
+                              widget.configApp.underConstructionTitle ?? LanguageFr.underConstructionTitle,
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodySmall,
+                              style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight: FontWeight.w600),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 10),
+                            Text(
+                              widget.configApp.underConstructionDescription ?? LanguageFr.underConstructionDescription,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+
+                            //
+                            const SizedBox(height: 10),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrl(
+                                  Uri.parse("https://weblifestarter.com"),
+                                  mode: LaunchMode.inAppWebView,
+                                  // webViewConfiguration: const WebViewConfiguration(headers: <String, String>{'my_header_key': 'my_header_value'}),
+                                );
+                              },
+                              child: Text(
+                                LanguageFr.textByWeblifestarter,
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               }
 
               if (widget.isUnderMaintenance == true) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: SizedBox(
-                        height: 250,
-                        child: Image.network(
-                          widget.configApp.underMaintenanceImageUrl!,
-                          fit: BoxFit.contain,
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: SizedBox(
+                          height: 250,
+                          child: Image.network(
+                            widget.configApp.underMaintenanceImageUrl!,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Column(
-                        children: [
-                          Text(
-                            widget.configApp.underConstructionTitle ?? LanguageFr.underMaintenanceTitle,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            widget.configApp.underConstructionDescription ?? LanguageFr.underMaintenanceDescription,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ],
+                      Flexible(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            Text(
+                              widget.configApp.underConstructionTitle ?? LanguageFr.underMaintenanceTitle,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.headline1!.copyWith(fontWeight: FontWeight.w600),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              widget.configApp.underConstructionDescription ?? LanguageFr.underMaintenanceDescription,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               }
 
