@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:package_kit_starter_v1/0_config_app/src/config_app.dart';
-import 'package:package_kit_starter_v1/loading_indicator/presentation/widgets/animated_loading_indicator.dart';
+import 'package:package_kit_starter_v1/animated_loading_indicator/presentation/widgets/animated_loading_indicator.dart';
 
 class Dialogs {
   BuildContext context;
