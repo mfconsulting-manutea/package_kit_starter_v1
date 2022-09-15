@@ -17,7 +17,7 @@ class ResponsiveSections {
     double? mobileSizeBoxHeight,
     double? sizeBoxHeight,
   }) {
-    if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
+    /* if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
       if (mobileRevertSection == true) {
         return Column(
           mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
@@ -48,6 +48,38 @@ class ResponsiveSections {
           rightTile.tile(),
         ],
       );
+    } */
+    if (!Breakpoints.isMobileSmall(context) || !Breakpoints.isMobileMedium(context) || !Breakpoints.isMobileLarge(context)) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          leftTile.tile(),
+          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
+          rightTile.tile(),
+        ],
+      );
+    } else {
+      if (mobileRevertSection == true) {
+        return Column(
+          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            rightTile.tile(),
+            SizedBox(height: mobileSizeBoxHeight ?? 20),
+            leftTile.tile(),
+          ],
+        );
+      } else {
+        return Column(
+          mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            leftTile.tile(),
+            SizedBox(height: mobileSizeBoxHeight ?? 20),
+            rightTile.tile(),
+          ],
+        );
+      }
     }
   }
 
@@ -59,7 +91,7 @@ class ResponsiveSections {
     double? mobileSizeBoxHeight,
     double? sizeBoxHeight,
   }) {
-    if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
+    /* if (Breakpoints.isMobileSmall(context) == true || Breakpoints.isMobileMedium(context) == true || Breakpoints.isMobileLarge(context) == true) {
       return Column(
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,6 +111,31 @@ class ResponsiveSections {
           SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
           centerTile.tile(),
           SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
+          rightTile.tile(),
+        ],
+      );
+    } */
+
+    if (!Breakpoints.isMobileSmall(context) || !Breakpoints.isMobileMedium(context) || !Breakpoints.isMobileLarge(context)) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          leftTile.tile(),
+          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
+          centerTile.tile(),
+          SizedBox(width: sizeBoxHeight ?? (Breakpoints.isTablet(context) ? 20 : 30)),
+          rightTile.tile(),
+        ],
+      );
+    } else {
+      return Column(
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          leftTile.tile(),
+          SizedBox(height: mobileSizeBoxHeight ?? 20),
+          centerTile.tile(),
+          SizedBox(height: mobileSizeBoxHeight ?? 20),
           rightTile.tile(),
         ],
       );
