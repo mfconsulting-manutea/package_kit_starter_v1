@@ -25,7 +25,7 @@ class SectionTile {
   });
 
   Widget tile() {
-    if (Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)) {
+    /* if (Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)) {
       return Expanded(
         flex: flex,
         child: Container(
@@ -46,6 +46,27 @@ class SectionTile {
         decoration: decoration ?? const BoxDecoration(),
         child: child,
       );
+    } */
+    if (!Breakpoints.isMobileSmall(context) && !Breakpoints.isMobileMedium(context) && !Breakpoints.isMobileLarge(context)) {
+      return Expanded(
+        flex: flex,
+        child: Container(
+          alignment: alignment ?? Alignment.topLeft,
+          padding: padding ?? EdgeInsets.zero,
+          margin: margin ?? EdgeInsets.zero,
+          decoration: decoration ?? const BoxDecoration(),
+          height: height,
+          // constraints: constraints!,
+          child: child,
+        ),
+      );
     }
+    return Container(
+      alignment: alignment ?? Alignment.topLeft,
+      padding: padding ?? EdgeInsets.zero,
+      margin: margin ?? EdgeInsets.zero,
+      decoration: decoration ?? const BoxDecoration(),
+      child: child,
+    );
   }
 }
