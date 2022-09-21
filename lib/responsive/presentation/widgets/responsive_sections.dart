@@ -14,12 +14,13 @@ class ResponsiveSections {
     required SectionTile leftTile,
     required SectionTile rightTile,
     MainAxisAlignment? mainAxisAlignment,
+    CrossAxisAlignment? crossAxisAlignment,
     double? mobileSizeBoxHeight,
     double? sizeBoxWidth,
   }) {
     return !Breakpoints.isMobileSmall(context) && !Breakpoints.isMobileMedium(context) && !Breakpoints.isMobileLarge(context)
         ? Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
             children: [
               leftTile.tile(),
               SizedBox(
@@ -36,7 +37,7 @@ class ResponsiveSections {
         : mobileRevertSection == true
             ? Column(
                 mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
                 children: [
                   rightTile.tile(),
                   SizedBox(height: mobileSizeBoxHeight ?? 20),
@@ -45,7 +46,7 @@ class ResponsiveSections {
               )
             : Column(
                 mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
                 children: [
                   leftTile.tile(),
                   SizedBox(height: mobileSizeBoxHeight ?? 20),
@@ -59,12 +60,13 @@ class ResponsiveSections {
     required SectionTile centerTile,
     required SectionTile rightTile,
     MainAxisAlignment? mainAxisAlignment,
+    CrossAxisAlignment? crossAxisAlignment,
     double? mobileSizeBoxHeight,
     double? sizeBoxWidth,
   }) {
     return !Breakpoints.isMobileSmall(context) && !Breakpoints.isMobileMedium(context) && !Breakpoints.isMobileLarge(context)
         ? Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
             children: [
               leftTile.tile(),
               SizedBox(
@@ -88,6 +90,8 @@ class ResponsiveSections {
             ],
           )
         : Column(
+            mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+            crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
             children: [
               leftTile.tile(),
               SizedBox(height: mobileSizeBoxHeight ?? 20),
