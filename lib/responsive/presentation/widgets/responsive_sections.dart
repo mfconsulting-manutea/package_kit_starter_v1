@@ -77,11 +77,12 @@ class ResponsiveSections {
               ),
               centerTile.tile(),
               SizedBox(
-                width: Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)
-                    ? 0
-                    : Breakpoints.isTablet(context)
-                        ? 20
-                        : 30,
+                width: sizeBoxWidth ??
+                    (Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context)
+                        ? 0
+                        : Breakpoints.isTablet(context)
+                            ? 20
+                            : 30),
               ),
               rightTile.tile(),
             ],
