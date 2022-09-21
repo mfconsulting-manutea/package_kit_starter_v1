@@ -56,7 +56,7 @@ class SectionTile {
           margin: margin ?? EdgeInsets.zero,
           decoration: decoration ?? const BoxDecoration(),
           height: height,
-          // constraints: constraints!,
+          constraints: constraints!,
           child: child,
         ),
       );
@@ -66,6 +66,8 @@ class SectionTile {
       padding: padding ?? EdgeInsets.zero,
       margin: margin ?? EdgeInsets.zero,
       decoration: decoration ?? const BoxDecoration(),
+      height: height,
+      constraints: constraints!,
       child: child,
     );
   }
