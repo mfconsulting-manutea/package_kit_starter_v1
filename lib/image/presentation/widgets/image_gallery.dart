@@ -40,8 +40,8 @@ class _ImageGalleryState extends State<ImageGallery> {
           child: InkWell(
             onTap: () {
               widget.fromUrl == true
-                  ? Dialogs(context: context).dialogViewImage(context, imageUrl: widget.listImages[currentImage])
-                  : Dialogs(context: context).dialogViewImage(context, imageAsset: widget.listImages[currentImage]);
+                  ? Dialogs(context: context).dialogViewImage(imageUrl: widget.listImages[currentImage])
+                  : Dialogs(context: context).dialogViewImage(imageAsset: widget.listImages[currentImage]);
             },
             child: widget.fromUrl == true
                 ? Image.network(
