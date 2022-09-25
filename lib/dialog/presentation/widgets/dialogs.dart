@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:package_kit_starter_v1/0_config_app/src/config_app.dart';
 import 'package:package_kit_starter_v1/animated_loading_indicator/presentation/widgets/animated_loading_indicator.dart';
 
@@ -9,11 +10,11 @@ class Dialogs {
     required this.context,
   });
 
-  Future dialogViewImage(
-    context, {
+  Future dialogViewImage({
     String? title,
     String? imageAsset,
     String? imageUrl,
+    Uint8List? imageMemory,
   }) {
     return showDialog(
       context: context,
@@ -25,7 +26,9 @@ class Dialogs {
               ? Image.asset(imageAsset)
               : imageUrl != null
                   ? Image.network(imageUrl)
-                  : null,
+                  : imageMemory != null
+                      ? Image.memory(imageMemory)
+                      : null,
         );
       },
     );
