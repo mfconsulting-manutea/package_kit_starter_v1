@@ -25,7 +25,7 @@ class HeroImage extends StatelessWidget {
         child: Opacity(
           opacity: disableBlackOverlay != true ? 0.7 : 1,
           child: GestureDetector(
-            onTap: () => Dialogs(context: context).dialogViewImage(context, imageUrl: imageUrl!),
+            onTap: () => Dialogs(context: context).dialogViewImage(imageUrl: imageUrl!),
             child: Image.network(
               imageUrl!,
               width: imageWidth,
