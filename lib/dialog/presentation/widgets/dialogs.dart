@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:package_kit_starter_v1/0_config_app/src/config_app.dart';
 import 'package:package_kit_starter_v1/animated_loading_indicator/presentation/widgets/animated_loading_indicator.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class Dialogs {
   BuildContext context;
@@ -15,6 +16,7 @@ class Dialogs {
     String? imageAsset,
     String? imageUrl,
     Uint8List? imageMemory,
+    Uint8List? pdf,
   }) {
     return showDialog(
       context: context,
@@ -28,7 +30,9 @@ class Dialogs {
                   ? Image.network(imageUrl)
                   : imageMemory != null
                       ? Image.memory(imageMemory)
-                      : null,
+                      : pdf != null
+                          ? SfPdfViewer.memory(pdf)
+                          : null,
         );
       },
     );
