@@ -9,7 +9,7 @@ class SendinblueRepository {
     required this.apiKey,
   });
 
-  Future sendTransactionalEmail({required Map<String, dynamic> data}) async {
+  Future<Map<String, dynamic>> sendTransactionalEmail({required Map<String, dynamic> data}) async {
     Response response = await Dio().post(
       "https://api.sendinblue.com/v3/smtp/email",
       data: data,
@@ -21,6 +21,8 @@ class SendinblueRepository {
         },
       ),
     );
+
+    print("sendTransactionalEmail response ${response.data}");
 
     return response.data;
   }

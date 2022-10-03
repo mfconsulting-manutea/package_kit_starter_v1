@@ -16,7 +16,7 @@ class SendinblueFailure extends SendinblueState {
 }
 
 class SendinblueSuccess extends SendinblueState {
-  Response response;
+  Map<String, dynamic> response;
 
   SendinblueSuccess({
     required this.response,

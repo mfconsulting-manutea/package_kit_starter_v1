@@ -18,7 +18,8 @@ class SendinblueCubit extends Cubit<SendinblueState> {
     emit(SendinblueLoading());
 
     try {
-      Response response = await sendinblueRepository.sendTransactionalEmail(data: mapData);
+      Map<String, dynamic> response = await sendinblueRepository.sendTransactionalEmail(data: mapData);
+
       emit(SendinblueSuccess(response: response));
     } catch (e) {
       emit(SendinblueFailure(message: e.toString()));
