@@ -10,7 +10,7 @@ class SendinblueRepository {
   });
 
   Future<Map<String, dynamic>> sendTransactionalEmail({required Map<String, dynamic> data}) async {
-    Response response = await Dio().post(
+    var response = await Dio().post(
       "https://api.sendinblue.com/v3/smtp/email",
       data: data,
       options: Options(
