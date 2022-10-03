@@ -9,9 +9,10 @@ class SendinblueRepository {
     required this.apiKey,
   });
 
-  Future sendTransactionalEmail({required Map<String, dynamic> mapData}) async {
+  Future sendTransactionalEmail({required Map<String, dynamic> data}) async {
     Response response = await Dio().post(
       "https://api.sendinblue.com/v3/smtp/email",
+      data: data,
       options: Options(
         headers: {
           HttpHeaders.acceptHeader: "application/json",
