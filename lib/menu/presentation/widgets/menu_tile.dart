@@ -8,7 +8,9 @@ Widget menuTile(
   bool? isDrawer,
   IconData? icon,
   required String label,
+  TextStyle? style,
   PageRouteInfo<dynamic>? navigate,
+  bool? showTooltip,
   bool? toLogout,
   Function? functionToLogout,
   MainAxisAlignment? rowMainAxisAlignment,
@@ -43,9 +45,28 @@ Widget menuTile(
             if (icon != null) const SizedBox(width: 10),
 
           //
-          Tooltip(
-            message: label,
-            child: Container(
+          if (showTooltip != false) ...[
+            Tooltip(
+              message: label,
+              child: Container(
+                alignment: containerAligment,
+                width: isDrawer == true ? 250 : null,
+                child: Text(
+                  label,
+                  /* style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: isDrawer == true ? null : Colors.white,
+                    ), */
+                  style: style ??
+                      GlobalTextTheme.textTheme(context).bodyMedium!.copyWith(
+                            color: isDrawer == true ? null : Colors.white,
+                          ),
+                  textAlign: textAlign,
+                ),
+              ),
+            ),
+          ],
+          if (showTooltip == false) ...[
+            Container(
               alignment: containerAligment,
               width: isDrawer == true ? 250 : null,
               child: Text(
@@ -53,13 +74,14 @@ Widget menuTile(
                 /* style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: isDrawer == true ? null : Colors.white,
                     ), */
-                style: GlobalTextTheme.textTheme(context).bodyMedium!.copyWith(
-                      color: isDrawer == true ? null : Colors.white,
-                    ),
+                style: style ??
+                    GlobalTextTheme.textTheme(context).bodyMedium!.copyWith(
+                          color: isDrawer == true ? null : Colors.white,
+                        ),
                 textAlign: textAlign,
               ),
             ),
-          ),
+          ],
 
           //
           if (rowMainAxisAlignment == MainAxisAlignment.end)
