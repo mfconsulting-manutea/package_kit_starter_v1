@@ -171,7 +171,10 @@ class Header extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     padding: const EdgeInsets.only(right: 20),
                     child: InkWell(
-                      onTap: () => Scaffold.of(context).openEndDrawer(),
+                      onTap: () {
+                        print("openEndDrawer");
+                        Scaffold.of(context).openEndDrawer();
+                      },
                       child: Container(
                         alignment: Alignment.centerRight,
                         child: FaIcon(
