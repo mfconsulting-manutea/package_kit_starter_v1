@@ -93,6 +93,8 @@ class _ScaffoldCustomizedState extends State<ScaffoldCustomized> {
         backgroundColor: Theme.of(context).backgroundColor,
         drawerEnableOpenDragGesture: false,
         endDrawerEnableOpenDragGesture: false,
+        drawer: widget.configApp.drawer,
+        endDrawer: widget.configApp.endDrawer,
         body: SafeArea(
           child: BlocConsumer<ConnectivityCubit, ConnectivityState>(
             listener: (context, state) {
