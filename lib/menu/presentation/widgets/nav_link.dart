@@ -6,6 +6,7 @@ class NavLink extends StatelessWidget {
   final IconData? icon;
   final String label;
   final PageRouteInfo<dynamic> route;
+  final Function? onTap;
   final bool? showTooltip;
   final bool? isDrawer;
   final MainAxisAlignment? rowMainAxisAlignment;
@@ -18,6 +19,7 @@ class NavLink extends StatelessWidget {
     this.icon,
     required this.label,
     required this.route,
+    this.onTap,
     this.showTooltip,
     this.isDrawer,
     this.rowMainAxisAlignment,
@@ -100,8 +102,12 @@ class NavLink extends StatelessWidget {
           ],
         ),
         onTap: () {
-          router.push(route);
-          router.pop();
+          if (onTap != null) {
+            onTap!();
+          } else {
+            router.push(route);
+            router.pop();
+          }
         },
       ),
     );
