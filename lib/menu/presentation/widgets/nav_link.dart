@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:package_kit_starter_v1/breakpoints/presentation/widgets/breakpoints.dart';
-import 'package:package_kit_starter_v1/styles/presentation/widgets/global_text_theme.dart';
 
 class NavLink extends StatelessWidget {
   final IconData? icon;
@@ -12,6 +10,8 @@ class NavLink extends StatelessWidget {
   final bool? isDrawer;
   final MainAxisAlignment? rowMainAxisAlignment;
   final TextStyle? style;
+  final Color? textColor;
+  final Color? iconColor;
 
   const NavLink({
     this.icon,
@@ -21,13 +21,14 @@ class NavLink extends StatelessWidget {
     this.isDrawer,
     this.rowMainAxisAlignment,
     this.style,
+    this.textColor,
+    this.iconColor,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     StackRouter router = context.router;
-    bool breakpointsIsMobiles = Breakpoints.isMobileSmall(context) || Breakpoints.isMobileMedium(context) || Breakpoints.isMobileLarge(context);
 
     TextAlign textAlign = TextAlign.start;
     AlignmentGeometry containerAligment = Alignment.centerLeft;
@@ -46,15 +47,14 @@ class NavLink extends StatelessWidget {
         child: Row(
           mainAxisAlignment: rowMainAxisAlignment ?? MainAxisAlignment.start,
           children: [
-            if (rowMainAxisAlignment != MainAxisAlignment.end)
-              if (icon != null)
-                FaIcon(
-                  icon,
-                  size: 16,
-                  color: isDrawer == true ? null : Colors.white,
-                ),
-            if (rowMainAxisAlignment != MainAxisAlignment.end)
-              if (icon != null) const SizedBox(width: 10),
+            if (rowMainAxisAlignment != MainAxisAlignment.end && icon != null) ...[
+              FaIcon(
+                icon,
+                size: 16,
+                color: iconColor ?? Colors.white,
+              ),
+              const SizedBox(width: 10)
+            ],
 
             //
             if (showTooltip != false) ...[
@@ -62,16 +62,13 @@ class NavLink extends StatelessWidget {
                 message: label,
                 child: Container(
                   alignment: containerAligment,
-                  width: isDrawer == true ? 250 : null,
+                  // width: isDrawer == true ? 250 : null,
+                  constraints: BoxConstraints(
+                    maxWidth: isDrawer == true ? 250 : double.infinity,
+                  ),
                   child: Text(
                     label,
-                    /* style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: isDrawer == true ? null : Colors.white,
-                    ), */
-                    style: style ??
-                        GlobalTextTheme.textTheme(context).bodyMedium!.copyWith(
-                              color: isDrawer == true ? null : Colors.white,
-                            ),
+                    style: style ?? Theme.of(context).textTheme.bodyMedium!.copyWith(color: textColor ?? Colors.white),
                     textAlign: textAlign,
                   ),
                 ),
@@ -83,28 +80,21 @@ class NavLink extends StatelessWidget {
                 width: isDrawer == true ? 250 : null,
                 child: Text(
                   label,
-                  /* style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: isDrawer == true ? null : Colors.white,
-                    ), */
-                  style: style ??
-                      GlobalTextTheme.textTheme(context).bodyMedium!.copyWith(
-                            color: isDrawer == true ? null : Colors.white,
-                          ),
+                  style: style ?? Theme.of(context).textTheme.bodyMedium!.copyWith(color: textColor ?? Colors.white),
                   textAlign: textAlign,
                 ),
               ),
             ],
 
             //
-            if (rowMainAxisAlignment == MainAxisAlignment.end)
-              if (icon != null) const SizedBox(width: 10),
-            if (rowMainAxisAlignment == MainAxisAlignment.end)
-              if (icon != null)
-                FaIcon(
-                  icon,
-                  size: 16,
-                  color: isDrawer == true ? null : Colors.white,
-                ),
+            if (rowMainAxisAlignment == MainAxisAlignment.end && icon != null) ...[
+              const SizedBox(width: 10),
+              FaIcon(
+                icon,
+                size: 16,
+                color: iconColor ?? Colors.white,
+              ),
+            ],
           ],
         ),
         onTap: () {
