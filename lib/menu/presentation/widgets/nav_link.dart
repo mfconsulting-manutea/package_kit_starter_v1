@@ -104,6 +104,9 @@ class NavLink extends StatelessWidget {
         onTap: () {
           if (onTap != null) {
             onTap!();
+
+            router.removeLast();
+            router.navigate(route);
           } else {
             router.push(route);
             router.pop();
