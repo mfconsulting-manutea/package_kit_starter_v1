@@ -12,6 +12,7 @@ class NavLink extends StatelessWidget {
   final TextStyle? style;
   final Color? textColor;
   final Color? iconColor;
+  final double? maxWidth;
 
   const NavLink({
     this.icon,
@@ -23,6 +24,7 @@ class NavLink extends StatelessWidget {
     this.style,
     this.textColor,
     this.iconColor,
+    this.maxWidth,
     super.key,
   });
 
@@ -64,7 +66,7 @@ class NavLink extends StatelessWidget {
                   alignment: containerAligment,
                   // width: isDrawer == true ? 250 : null,
                   constraints: BoxConstraints(
-                    maxWidth: isDrawer == true ? 250 : double.infinity,
+                    maxWidth: maxWidth ?? (isDrawer == true ? 250 : double.infinity),
                   ),
                   child: Text(
                     label,
@@ -77,7 +79,7 @@ class NavLink extends StatelessWidget {
             if (showTooltip == false) ...[
               Container(
                 alignment: containerAligment,
-                width: isDrawer == true ? 250 : null,
+                width: maxWidth ?? (isDrawer == true ? 250 : double.infinity),
                 child: Text(
                   label,
                   style: style ?? Theme.of(context).textTheme.bodyMedium!.copyWith(color: textColor ?? Colors.white),
