@@ -23,15 +23,13 @@ class PriceAndTax {
   }
 
   List<int> returnListAmountTax() {
-    List<int> _return = [0];
+    List<int> _return = [];
 
     for (var tax in listTaxPercentage) {
       int value = (amountWithoutTax * (tax / 100)).toInt();
 
       _return.add(value);
     }
-
-    print("_return $_return");
 
     return _return;
   }
