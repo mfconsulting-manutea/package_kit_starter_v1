@@ -26,8 +26,12 @@ class PriceAndTax {
     List<int> _return = [0];
 
     for (var tax in listTaxPercentage) {
-      _return.add((amountWithoutTax * (tax / 100)).toInt());
+      int value = (amountWithoutTax * (tax / 100)).toInt();
+
+      _return.add(value);
     }
+
+    print("_return $_return");
 
     return _return;
   }
