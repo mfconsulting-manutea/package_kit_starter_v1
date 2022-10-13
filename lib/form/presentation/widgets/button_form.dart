@@ -14,6 +14,7 @@ Widget buttonForm({
   ButtonStyle? buttonStyle,
   TextStyle? textStyle,
   Color? iconColor,
+  double? iconSize,
 }) {
   return Padding(
     padding: EdgeInsets.all(paddingAll ?? 20),
@@ -28,6 +29,7 @@ Widget buttonForm({
             icon: FaIcon(
               icon,
               color: iconColor ?? (whiteBackground == true ? null : Colors.white),
+              size: iconSize,
             ),
             style: buttonStyle ??
                 ElevatedButton.styleFrom(
